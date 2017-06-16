@@ -32,7 +32,8 @@ You will need to include the required Nuget packages within the functions `proje
         "net46": {
             "dependencies": {
                 "Serilog": "2.4.0",
-                "Serilog.Sinks.AzureWebJobsTraceWriter": "1.0.0"
+                "Serilog.Sinks.AzureWebJobsTraceWriter": "1.0.0",
+                "Microsoft.Azure.WebJobs": "2.1.0"
             }
         }
     }
@@ -42,6 +43,9 @@ You will need to include the required Nuget packages within the functions `proje
 Then you can create a new logger within the scope of your function's static run method:
 
 ```csharp
+// This is required to point to the internal version of WebJobs.Host
+#r "Microsoft.Azure.WebJobs.Host"
+
 using System.Net;
 using Serilog;
 using Serilog.Sinks.AzureWebJobsTraceWriter;
@@ -54,10 +58,10 @@ public static string Run(HttpRequestMessage req, TraceWriter log)
 
     string someData = Guid.NewGuid().ToString();
 
-    logger.Information("This is logging test for {someData}", someData)
+    logger.Information("This is logging test for {someData}", someData);
 
-    return $"Done with {someData}";
-}
+    return $"Done with {someData}"; 
+} 
 ```
 
 ### Helpful Links
