@@ -1,6 +1,8 @@
 # Serilog Azure WebJobs/Functions TraceWriter Sink
 
 [![NuGet Version](https://img.shields.io/nuget/v/Serilog.Sinks.AzureWebJobsTraceWriter.svg?style=flat)](https://www.nuget.org/packages/Serilog.Sinks.AzureWebJobsTraceWriter/)
+[![AppVeyor](https://img.shields.io/appveyor/ci/ScottHolden/serilog-sinks-azurewebjobstracewriter.svg)](https://ci.appveyor.com/project/ScottHolden/serilog-sinks-azurewebjobstracewriter)
+[![Coverage Status](https://coveralls.io/repos/github/StarRez/Serilog.Sinks.AzureWebJobsTraceWriter/badge.svg?branch=master)](https://coveralls.io/github/StarRez/Serilog.Sinks.AzureWebJobsTraceWriter?branch=master)
 
 A Serilog sink that writes events to Azure WebJob Host's TraceWriter. This is the logging mechanism used by both Azure WebJob's, and Azure Functions (which is built on top of the WebJob Host).
 
