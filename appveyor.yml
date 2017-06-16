@@ -9,7 +9,7 @@ assembly_info:
   assembly_informational_version: '{version}'
 environment:
   COVERALLS_REPO_TOKEN:
-    secure: NTOdRRC2qiktD/u0NFb1/BYCQotVvHqLre2hNSlOn9SR8Hw0ZQhPSAmqL+2mt1zN
+    secure: LsohuXRLZ7rYIUlBx/sKRWggp6qzHWh2wge+DNrDJPnPoeQnNrKprYOBex6rpQ4f
 before_build:
   - nuget restore ".\Serilog.Sinks.AzureWebJobsTraceWriter.sln"
 build:

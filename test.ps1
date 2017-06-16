@@ -1,4 +1,3 @@
-$coverJsonFile = "cover.json"
 $codeCoverageFile = "CodeCoverage.runsettings"
 $coverageXmlFile = "coverage.coveragexml"
 
@@ -18,10 +17,10 @@ if (Test-Path -Path ".\$coverageXmlFile")
      Remove-Item -Path ".\$coverageXmlFile"
 }
 
+Push-AppveyorArtifact "$coverageFilePath"
+
 .$vsCodeCoverageExe analyze /output:$coverageXmlFile "$coverageFilePath"
 
 Push-AppveyorArtifact "$coverageXmlFile"
 
-& $coverallsPath --dynamiccodecoverage -i coverage.coveragexml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID --useRelativePaths -o $coverJsonFile
-
-Push-AppveyorArtifact "$coverJsonFile"
+& $coverallsPath --dynamiccodecoverage -i $coverageXmlFile --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID --useRelativePaths
