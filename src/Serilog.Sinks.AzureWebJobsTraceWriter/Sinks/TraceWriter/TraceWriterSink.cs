@@ -21,8 +21,18 @@ namespace Serilog.Sinks.AzureWebJobsTraceWriter
 		/// <param name="formatter">The formatter to use on emit</param>
 		public TraceWriterSink(TraceWriter traceWriter, ITextFormatter formatter)
 		{
-			m_traceWriter = traceWriter ?? throw new ArgumentNullException(nameof(traceWriter));
-			m_formatter = formatter ?? throw new ArgumentNullException(nameof(formatter));
+			if (traceWriter == null)
+			{
+				throw new ArgumentNullException(nameof(traceWriter));
+			}
+
+			if (formatter == null)
+			{
+				throw new ArgumentNullException(nameof(formatter));
+			}
+
+			m_traceWriter = traceWriter;
+			m_formatter = formatter;
 		}
 
 		/// <summary>
