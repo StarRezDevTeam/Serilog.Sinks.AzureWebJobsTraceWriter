@@ -19,4 +19,4 @@ deploy:
   api_key:
     secure: zO/+Rey/GEVueni9Fp4eI4HLv4HxW+vb7McIAQEqOtjoj0DETsqUmV4AOWz1ZTOG
   skip_symbols: false
-  artifact: /.*\.nupkg/
+  artifact: .\src\Serilog.Sinks.AzureWebJobsTraceWriter\Serilog.Sinks.AzureWebJobsTraceWriter.%appveyor_build_version%.nupkg
