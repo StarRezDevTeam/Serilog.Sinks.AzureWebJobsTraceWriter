@@ -14,7 +14,7 @@ build:
   verbosity: minimal
 after_build:
   - nuget pack ".\src\Serilog.Sinks.AzureWebJobsTraceWriter\Serilog.Sinks.AzureWebJobsTraceWriter.nuspec" -Version %appveyor_build_version%
-  - ps: Get-ChildItem .\src\Serilog.Sinks.AzureWebJobsTraceWriter\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+  - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 deploy:
   provider: NuGet
   api_key:
