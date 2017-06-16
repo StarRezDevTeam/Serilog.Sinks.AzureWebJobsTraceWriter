@@ -7,6 +7,9 @@ assembly_info:
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: NTOdRRC2qiktD/u0NFb1/BYCQotVvHqLre2hNSlOn9SR8Hw0ZQhPSAmqL+2mt1zN
 before_build:
   - nuget restore ".\Serilog.Sinks.AzureWebJobsTraceWriter.sln"
 build:
@@ -15,3 +18,5 @@ build:
 after_build:
   - nuget pack ".\src\Serilog.Sinks.AzureWebJobsTraceWriter\Serilog.Sinks.AzureWebJobsTraceWriter.nuspec" -Version %appveyor_build_version%
   - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+test_script:
+- ps: .\test.ps1
