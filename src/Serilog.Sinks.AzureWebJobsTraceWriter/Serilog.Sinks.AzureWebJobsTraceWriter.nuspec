@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+    <id>Serilog.Sinks.AzureWebJobsTraceWriter</id>
+    <version>$version$</version>
+    <title>Serilog.Sinks.AzureWebJobsTraceWriter</title>
+    <authors>StarRez</authors>
+    <owners>StarRez</owners>
+    <projectUrl>https://github.com/StarRez/Serilog.Sinks.AzureWebJobsTraceWriter</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <tags>Serilog Sink TraceWriter Trace Writer Azure WebJob Functions</tags>
+    </metadata>
+</package>
