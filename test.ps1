@@ -1,6 +1,5 @@
 $codeCoverageFile = "CodeCoverage.runsettings"
 $coverageXmlFile = "TestResults\coverage.coveragexml"
-$testResultXmlFile = "TestResults\testresults.trx"
 
 $xunitRunnerVSPath = (Resolve-Path ".\packages\xunit.runner.visualstudio.*\build\_common\").Path
 $coverallsPath = (Resolve-Path ".\packages\coveralls.net.*\tools\csmacnz.coveralls.exe").Path
@@ -29,25 +28,15 @@ if (Test-Path -Path ".\$coverageXmlFile")
      Remove-Item -Path ".\$coverageXmlFile"
 }
 
-vstest.console.exe /inIsolation /Enablecodecoverage /TestAdapterPath:"$xunitRunnerVSPath" /Settings:$codeCoverageFile /logger:trx "$unitTestsPath" 
+vstest.console.exe /inIsolation /Enablecodecoverage /TestAdapterPath:"$xunitRunnerVSPath" /Settings:$codeCoverageFile /logger:Appveyor "$unitTestsPath" 
 
 $coverageFilePath = (Resolve-Path -path "TestResults\*\*.coverage").Path
-$trxSourcePath = @(Resolve-Path -path "TestResults\*.trx")[0].Path
 
 if (Test-Path -Path $coverageXmlFile)
 {
      Remove-Item -Path $coverageXmlFile
 }
-if (Test-Path -Path $testResultXmlFile)
-{
-     Remove-Item -Path $testResultXmlFile
-}
-
-Copy-Item -Path $trxSourcePath -Destination $testResultXmlFile
 
 & $vsCodeCoverageExe analyze /output:$coverageXmlFile "$coverageFilePath"
-
-Push-AppveyorArtifact $testResultXmlFile
-Push-AppveyorArtifact $coverageXmlFile
 
 & $coverallsPath --dynamiccodecoverage -i $coverageXmlFile --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID --useRelativePaths
