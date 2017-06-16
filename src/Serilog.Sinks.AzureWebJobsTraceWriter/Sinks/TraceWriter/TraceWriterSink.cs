@@ -82,28 +82,22 @@ namespace Serilog.Sinks.AzureWebJobsTraceWriter
 
 		internal static TraceLevel GetLogEventTraceLevel(LogEventLevel logEventLevel)
 		{
-			switch (logEventLevel)
+			if (logEventLevel == LogEventLevel.Fatal || logEventLevel == LogEventLevel.Error)
 			{
-				case LogEventLevel.Fatal:
-				case LogEventLevel.Error:
-				{
-					return TraceLevel.Error;
-				}
-				case LogEventLevel.Warning:
-				{
-					return TraceLevel.Warning;
-				}
-				case LogEventLevel.Information:
-				{
-					return TraceLevel.Info;
-				}
-				case LogEventLevel.Verbose:
-				case LogEventLevel.Debug:
-				default:
-				{
-					return TraceLevel.Verbose;
-				}
+				return TraceLevel.Error;
 			}
+
+			if (logEventLevel == LogEventLevel.Warning)
+			{
+				return TraceLevel.Warning;
+			}
+
+			if (logEventLevel == LogEventLevel.Information)
+			{
+				return TraceLevel.Info;
+			}
+
+			return TraceLevel.Verbose;
 		}
 
 		internal static string FormatLogEventMessage(LogEvent logEvent, ITextFormatter formatter)
