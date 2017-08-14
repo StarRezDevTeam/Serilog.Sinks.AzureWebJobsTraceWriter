@@ -11,7 +11,7 @@
         <description>A Serilog sink that writes events to Azure WebJob Host's TraceWriter.</description>
         <tags>Serilog Sink TraceWriter Trace Writer Azure WebJob Functions</tags>
         <dependencies>
-			<dependency id="Microsoft.Azure.WebJobs" version="2.0" />
+			<dependency id="Microsoft.Azure.WebJobs" version="2.1-beta1" />
 			<dependency id="Serilog" version="2.4" />
 		</dependencies>
     </metadata>
