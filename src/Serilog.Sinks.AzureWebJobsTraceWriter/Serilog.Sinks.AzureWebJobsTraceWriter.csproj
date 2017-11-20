@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.0-beta3" />
-    <PackageReference Include="Serilog" Version="2.5.0" />
+	<PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.0-beta3">
+		<PrivateAssets>all</PrivateAssets>
+	</PackageReference>
+	<PackageReference Include="Serilog" Version="2.5.0" />
   </ItemGroup>
 
 	<PropertyGroup>
 		<PackageId>Serilog.Sinks.AzureWebJobsTraceWriter</PackageId>
-		<PackageVersion>2.0</PackageVersion>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>Serilog Sink TraceWriter Trace Writer Azure WebJob Functions</PackageTags>
 		<PackageProjectUrl>https://github.com/StarRez/Serilog.Sinks.AzureWebJobsTraceWriter</PackageProjectUrl>
