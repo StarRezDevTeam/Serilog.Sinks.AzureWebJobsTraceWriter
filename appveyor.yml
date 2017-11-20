@@ -12,12 +12,12 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: LsohuXRLZ7rYIUlBx/sKRWggp6qzHWh2wge+DNrDJPnPoeQnNrKprYOBex6rpQ4f
 before_build:
-  - nuget restore ".\Serilog.Sinks.AzureWebJobsTraceWriter.sln"
+  - dotnet restore
 build:
   project: .\Serilog.Sinks.AzureWebJobsTraceWriter.sln
   verbosity: minimal
-  - dotnet pack --version-suffix %appveyor_build_version%
 after_build:
+  - dotnet pack --version-suffix %appveyor_build_version%
   - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 test_script:
 - ps: .\test.ps1
