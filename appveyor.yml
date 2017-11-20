@@ -16,8 +16,8 @@ before_build:
 build:
   project: .\Serilog.Sinks.AzureWebJobsTraceWriter.sln
   verbosity: minimal
+  - dotnet pack --version-suffix %appveyor_build_version%
 after_build:
-  - nuget pack ".\src\Serilog.Sinks.AzureWebJobsTraceWriter\Serilog.Sinks.AzureWebJobsTraceWriter.nuspec" -Version %appveyor_build_version%
   - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 test_script:
 - ps: .\test.ps1
