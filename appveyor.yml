@@ -7,6 +7,7 @@ assembly_info:
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
+image: Visual Studio 2017
 environment:
   COVERALLS_REPO_TOKEN:
     secure: LsohuXRLZ7rYIUlBx/sKRWggp6qzHWh2wge+DNrDJPnPoeQnNrKprYOBex6rpQ4f
