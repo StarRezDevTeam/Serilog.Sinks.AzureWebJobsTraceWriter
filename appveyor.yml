@@ -20,4 +20,5 @@ after_build:
   - dotnet pack --version-suffix %appveyor_build_version%
   - ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 test_script:
-- ps: .\test.ps1
+    - dotnet test tests\Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests
+   
