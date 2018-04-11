@@ -52,15 +52,17 @@ using Serilog.Sinks.AzureWebJobsTraceWriter;
 
 public static string Run(HttpRequestMessage req, TraceWriter log)
 {
-    ILogger logger = new LoggerConfiguration()
+    using (Logger logger = new LoggerConfiguration()
                         .WriteTo.TraceWriter(log)
-                        .CreateLogger();
+                        .CreateLogger())
+    {
 
-    string someData = Guid.NewGuid().ToString();
+        string someData = Guid.NewGuid().ToString();
 
-    logger.Information("This is logging test for {someData}", someData);
+        logger.Information("This is logging test for {someData}", someData);
 
-    return $"Done with {someData}"; 
+        return $"Done with {someData}"; 
+    }
 } 
 ```
 
