@@ -4,10 +4,11 @@ using Serilog.Configuration;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Display;
+using Serilog.Sinks.AzureWebJobsTraceWriter.Sinks;
 
 namespace Serilog.Sinks.AzureWebJobsTraceWriter
 {
-	public static class TraceWriterLoggerConfigurationExtensions
+    public static class TraceWriterLoggerConfigurationExtensions
 	{
 		private const string DefaultOutputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}";
 

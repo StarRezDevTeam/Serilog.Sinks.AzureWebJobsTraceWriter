@@ -7,8 +7,10 @@ using Microsoft.Azure.WebJobs.Host;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
+using Serilog.Formatting.Compact;
 using Serilog.Formatting.Display;
 using Serilog.Formatting.Raw;
+using Serilog.Sinks.AzureWebJobsTraceWriter.Sinks;
 using Xunit;
 
 namespace Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests
@@ -21,7 +23,7 @@ namespace Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests
 		{
 			Assert.Throws<ArgumentNullException>(() =>
 			{
-				ITextFormatter formatter = new RawFormatter();
+				ITextFormatter formatter = new CompactJsonFormatter();
 
 				TraceWriterSink t = new TraceWriterSink(null, formatter);
 			});
@@ -42,7 +44,7 @@ namespace Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests
 		public void Constructor()
 		{
 			TraceWriter traceWriter = new InMemoryTraceWriter(TraceLevel.Verbose);
-			ITextFormatter formatter = new RawFormatter();
+			ITextFormatter formatter = new CompactJsonFormatter();
 
 			TraceWriterSink t = new TraceWriterSink(traceWriter, formatter);
 		}
@@ -78,7 +80,7 @@ namespace Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests
 		[Fact]
 		public void FormatLogEventMessage_NullLogEvent()
 		{
-			ITextFormatter formatter = new RawFormatter();
+			ITextFormatter formatter = new CompactJsonFormatter();
 
 			string formattedMessage = TraceWriterSink.FormatLogEventMessage(null, formatter);
 
@@ -157,7 +159,7 @@ namespace Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests
 		[Fact]
 		public void BuildTraceEvent_NullLogEvent()
 		{
-			ITextFormatter formatter = new RawFormatter();
+			ITextFormatter formatter = new CompactJsonFormatter();
 
 			TraceEvent traceEvent = TraceWriterSink.BuildTraceEvent(null, formatter);
 
@@ -197,7 +199,7 @@ namespace Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests
 		{
 			InMemoryTraceWriter traceWriter = new InMemoryTraceWriter(TraceLevel.Verbose);
 
-			ITextFormatter formatter = new RawFormatter();
+			ITextFormatter formatter = new CompactJsonFormatter();
 
 			TraceWriterSink sink = new TraceWriterSink(traceWriter, formatter);
 

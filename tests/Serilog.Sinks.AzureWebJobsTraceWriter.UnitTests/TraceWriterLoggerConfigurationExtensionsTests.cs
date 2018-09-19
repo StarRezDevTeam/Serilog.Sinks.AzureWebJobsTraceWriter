@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.Azure.WebJobs.Host;
 using Serilog.Events;
 using Serilog.Formatting;
+using Serilog.Formatting.Compact;
 using Serilog.Formatting.Display;
 using Serilog.Formatting.Raw;
 using Xunit;
@@ -22,7 +23,7 @@ namespace Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests
 			{
 				InMemoryTraceWriter traceWriter = new InMemoryTraceWriter(TraceLevel.Verbose);
 
-				ITextFormatter formatter = new RawFormatter();
+				ITextFormatter formatter = new CompactJsonFormatter();
 
 				TraceWriterLoggerConfigurationExtensions.TraceWriter(null, traceWriter, formatter);
 			});
@@ -35,7 +36,7 @@ namespace Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests
 			{
 				LoggerConfiguration loggerConfiguration = new LoggerConfiguration();
 
-				ITextFormatter formatter = new RawFormatter();
+				ITextFormatter formatter = new CompactJsonFormatter();
 
 				TraceWriterLoggerConfigurationExtensions.TraceWriter(loggerConfiguration.WriteTo, null, formatter);
 			});

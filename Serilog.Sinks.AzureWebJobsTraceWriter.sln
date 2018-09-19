@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{58F1E5DA-B51
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C20A8CEA-E2DC-4045-B628-68159108B19A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.AzureWebJobsTraceWriter", "src\Serilog.Sinks.AzureWebJobsTraceWriter\Serilog.Sinks.AzureWebJobsTraceWriter.csproj", "{B67A68AD-36D3-47AB-9846-A21ECEADA700}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests", "tests\Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests\Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests.csproj", "{B9938905-C77E-43D6-9591-22178DFF6C02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.AzureWebJobsTraceWriter", "src\Serilog.Sinks.AzureWebJobsTraceWriter\Serilog.Sinks.AzureWebJobsTraceWriter.csproj", "{086007F1-DAA7-4A25-9BB4-AD5A54AE5019}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,20 +17,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B67A68AD-36D3-47AB-9846-A21ECEADA700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B67A68AD-36D3-47AB-9846-A21ECEADA700}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B67A68AD-36D3-47AB-9846-A21ECEADA700}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B67A68AD-36D3-47AB-9846-A21ECEADA700}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9938905-C77E-43D6-9591-22178DFF6C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9938905-C77E-43D6-9591-22178DFF6C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9938905-C77E-43D6-9591-22178DFF6C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9938905-C77E-43D6-9591-22178DFF6C02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086007F1-DAA7-4A25-9BB4-AD5A54AE5019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086007F1-DAA7-4A25-9BB4-AD5A54AE5019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086007F1-DAA7-4A25-9BB4-AD5A54AE5019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086007F1-DAA7-4A25-9BB4-AD5A54AE5019}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B67A68AD-36D3-47AB-9846-A21ECEADA700} = {58F1E5DA-B51B-49FD-8BC6-010DED377357}
 		{B9938905-C77E-43D6-9591-22178DFF6C02} = {C20A8CEA-E2DC-4045-B628-68159108B19A}
+		{086007F1-DAA7-4A25-9BB4-AD5A54AE5019} = {58F1E5DA-B51B-49FD-8BC6-010DED377357}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A3A7875-92D0-496A-9369-3C29028A4593}
 	EndGlobalSection
 EndGlobal
