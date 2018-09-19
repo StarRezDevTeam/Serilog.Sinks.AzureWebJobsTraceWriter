@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using Microsoft.Azure.WebJobs.Host;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 
-namespace Serilog.Sinks.AzureWebJobsTraceWriter
+[assembly: InternalsVisibleTo("Serilog.Sinks.AzureWebJobsTraceWriter.UnitTests")]
+namespace Serilog.Sinks.AzureWebJobsTraceWriter.Sinks
 {
-	public class TraceWriterSink : ILogEventSink
+    public class TraceWriterSink : ILogEventSink
 	{
 		private readonly TraceWriter m_traceWriter;
 		private readonly ITextFormatter m_formatter;
